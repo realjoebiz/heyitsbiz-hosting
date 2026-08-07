@@ -1,25 +1,20 @@
-import { ShieldIcon, BoltIcon, HeadsetIcon, TagIcon } from "./Icons";
+import { FeatureIllustration } from "./FeatureIllustration";
 
-const FEATURES = [
+const BLOCKS = [
   {
-    icon: ShieldIcon,
-    title: "Cloudflare DNS",
-    body: "Your nameservers run on Cloudflare's network, not a budget DNS box we run ourselves.",
+    variant: "search" as const,
+    title: "Search and register in minutes",
+    body: "Type a name, see if it's free, register it — no account maze before you can even check.",
   },
   {
-    icon: TagIcon,
+    variant: "price" as const,
     title: "One flat price",
-    body: "£ shown before you pay, every time — the checkout total is the total.",
+    body: "The price on the page is the price at checkout. Stripe shows the total before you pay, always.",
   },
   {
-    icon: HeadsetIcon,
+    variant: "support" as const,
     title: "Direct support",
-    body: "A small, independent operation. If something's wrong, you reach the person who can fix it.",
-  },
-  {
-    icon: BoltIcon,
-    title: "New, and upfront about it",
-    body: "Hosting isn't live yet. You'll find honest status on this page, not marketing gloss.",
+    body: "A small, independent operation. If something's wrong, you reach the person who can fix it — not a queue.",
   },
 ];
 
@@ -27,26 +22,31 @@ const PROVIDERS = ["Cloudflare", "Stripe", "Coolify"];
 
 export function TrustSignals() {
   return (
-    <section className="border-t border-line bg-surface py-20">
-      <div className="mx-auto max-w-5xl px-6">
+    <section className="border-t border-line py-20">
+      <div className="mx-auto max-w-4xl px-6">
         <div className="text-center">
           <h2 className="text-3xl font-bold">Built plainly</h2>
           <p className="mt-2 text-inkMuted">No feature you can't check for yourself.</p>
         </div>
 
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="rounded-2xl bg-bg p-6 shadow-sm">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <Icon className="h-5 w-5" />
+        <div className="mt-14 flex flex-col gap-16">
+          {BLOCKS.map((block, i) => (
+            <div
+              key={block.title}
+              className={`flex flex-col items-center gap-8 sm:flex-row ${
+                i % 2 === 1 ? "sm:flex-row-reverse" : ""
+              }`}
+            >
+              <FeatureIllustration variant={block.variant} className="w-40 shrink-0 sm:w-48" />
+              <div className="text-center sm:text-left">
+                <h3 className="text-xl font-semibold">{block.title}</h3>
+                <p className="mt-2 max-w-md text-inkMuted">{block.body}</p>
               </div>
-              <h3 className="mt-4 font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-inkMuted">{body}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-14 flex flex-col items-center gap-3">
+        <div className="mt-16 flex flex-col items-center gap-3 border-t border-line pt-10">
           <p className="text-xs font-medium uppercase tracking-wide text-inkMuted">
             Built on infrastructure you can verify
           </p>
