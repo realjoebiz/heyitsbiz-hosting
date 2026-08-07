@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id               String            @id @default(cuid())
+  email            String            @unique
+  name             String?
+  stripeCustomerId String?           @unique
+  createdAt        DateTime          @default(now())
+  domains          Domain[]
+  hostingInstances HostingInstance[]
+  invoices         Invoice[]
+}
+
+enum DomainStatus {
+  PENDING
+  REGISTERING
+  ACTIVE
+  FAILED
+  EXPIRED
+}
+
+model Domain {
+  id           String            @id @default(cuid())
+  name         String            @unique
+  customerId   String
+  customer     Customer          @relation(fields: [customerId], references: [id])
+  status       DomainStatus      @default(PENDING)
+  nameservers  String[]          @default([])
+  registeredAt DateTime?
+  expiresAt    DateTime?
+  createdAt    DateTime          @default(now())
+  jobs         ProvisioningJob[]
+  hosting      HostingInstance[]
+}
+
+model HostingInstance {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+  domainId   String?
+  domain     Domain?  @relation(fields: [domainId], references: [id])
+  provider   String   @default("hetzner")
+  serverId   String?
+  status     String   @default("pending")
+  createdAt  DateTime @default(now())
+}
+
+model Invoice {
+  id              String   @id @default(cuid())
+  customerId      String
+  customer        Customer @relation(fields: [customerId], references: [id])
+  stripeInvoiceId String?  @unique
+  amountCents     Int
+  currency        String   @default("gbp")
+  status          String
+  createdAt       DateTime @default(now())
+}
+
+enum JobType {
+  DOMAIN_REGISTER
+  DNS_ZONE_CREATE
+  HOSTING_PROVISION
+}
+
+enum JobStatus {
+  PENDING
+  PROCESSING
+  COMPLETE
+  FAILED
+}
+
+model ProvisioningJob {
+  id         String    @id @default(cuid())
+  type       JobType
+  domainId   String?
+  domain     Domain?   @relation(fields: [domainId], references: [id])
+  payload    Json
+  status     JobStatus @default(PENDING)
+  attempts   Int       @default(0)
+  lastError  String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
