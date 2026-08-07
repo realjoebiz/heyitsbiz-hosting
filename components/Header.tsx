@@ -1,29 +1,30 @@
-import { SealMark } from "./SealMark";
+import { Logo } from "./Logo";
 
 const NAV = [
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#pricing", label: "Pricing" },
+  { href: "#domains", label: "Domains" },
+  { href: "#plans", label: "Plans" },
   { href: "#hosting", label: "Hosting" },
   { href: "#faq", label: "FAQ" },
 ];
 
 export function Header() {
   return (
-    <header className="border-b border-line">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-6 py-5">
-        <a href="#" className="flex items-center gap-2.5">
-          <SealMark className="h-6 w-6 text-accent" />
-          <span className="font-display text-lg font-medium tracking-tight">
-            Hosting by Biz
-          </span>
-        </a>
-        <nav className="hidden items-center gap-6 text-sm text-inkMuted sm:flex">
+    <header className="sticky top-0 z-20 border-b border-line bg-bg/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <a href="#"><Logo /></a>
+        <nav className="hidden items-center gap-8 text-sm font-medium text-inkMuted md:flex">
           {NAV.map((item) => (
             <a key={item.href} href={item.href} className="hover:text-ink">
               {item.label}
             </a>
           ))}
         </nav>
+        <a
+          href="#domains"
+          className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primaryDark"
+        >
+          Search a domain
+        </a>
       </div>
     </header>
   );

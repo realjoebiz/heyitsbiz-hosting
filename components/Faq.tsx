@@ -13,20 +13,20 @@ const ITEMS = [
   },
   {
     q: "When does hosting launch?",
-    a: "No fixed date yet. Leave your email below and you'll be told the day it opens, not before.",
+    a: "No fixed date yet. Leave your email above and you'll be told the day it opens, not before.",
   },
 ];
 
 export function Faq() {
   return (
-    <section id="faq" className="border-t border-line">
-      <div className="mx-auto max-w-3xl px-6 py-16">
-        <h2 className="font-display text-2xl font-medium">Questions</h2>
-        <dl className="mt-8 flex flex-col divide-y divide-line">
+    <section id="faq" className="py-20">
+      <div className="mx-auto max-w-3xl px-6">
+        <h2 className="text-center text-3xl font-bold">Questions</h2>
+        <dl className="mx-auto mt-10 flex max-w-2xl flex-col divide-y divide-line">
           {ITEMS.map((item) => (
-            <div key={item.q} className="py-5 first:pt-0">
-              <dt className="font-display text-lg">{item.q}</dt>
-              <dd className="mt-2 text-sm text-inkMuted">{item.a}</dd>
+            <div key={item.q} className="py-6 first:pt-0">
+              <dt className="text-lg font-semibold">{item.q}</dt>
+              <dd className="mt-2 text-inkMuted">{item.a}</dd>
             </div>
           ))}
         </dl>

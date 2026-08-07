@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
-import { Newsreader, Public_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Manrope, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const publicSans = Public_Sans({
+const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -30,11 +23,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${newsreader.variable} ${publicSans.variable} ${plexMono.variable}`}
-    >
-      <body className="bg-paper text-ink font-body antialiased">{children}</body>
+    <html lang="en" className={`${manrope.variable} ${plexMono.variable}`}>
+      <body className="bg-bg text-ink font-body antialiased">{children}</body>
     </html>
   );
 }

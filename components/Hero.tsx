@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SealMark } from "./SealMark";
+import { CheckIcon, ShieldIcon, BoltIcon, HeadsetIcon } from "./Icons";
 
 interface AvailabilityResult {
   domain: string;
@@ -10,6 +10,12 @@ interface AvailabilityResult {
 }
 
 type Status = "idle" | "loading" | "result" | "unconfigured" | "error";
+
+const CHIPS = [
+  { icon: ShieldIcon, label: "Cloudflare DNS" },
+  { icon: BoltIcon, label: "Transparent pricing" },
+  { icon: HeadsetIcon, label: "Direct support" },
+];
 
 export function Hero() {
   const [query, setQuery] = useState("");
@@ -36,9 +42,7 @@ export function Hero() {
 
       if (res.status === 501) {
         setStatus("unconfigured");
-        setMessage(
-          "Registration is being finished on the back end right now — check back soon."
-        );
+        setMessage("Registration is being finished on the back end right now — check back soon.");
         return;
       }
       if (!res.ok) {
@@ -78,101 +82,105 @@ export function Hero() {
   }
 
   return (
-    <section className="mx-auto max-w-3xl px-6 pb-20 pt-16 sm:pt-24">
-      <h1 className="font-display text-4xl font-medium leading-[1.1] sm:text-5xl">
-        Search a domain.
-        <br />
-        Register it in minutes.
-      </h1>
-      <p className="mt-5 max-w-xl text-lg text-inkMuted">
-        Straightforward domain registration today. Hosting for what you build lands
-        soon, in the same place — see below.
-      </p>
+    <section id="domains" className="hero-gradient pb-32 pt-20 text-white sm:pt-28">
+      <div className="mx-auto max-w-3xl px-6 text-center">
+        <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">
+          Your domain, sorted in minutes.
+        </h1>
+        <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
+          Search, register, and manage your domain from one place. Hosting for what you
+          build lands soon, in the same account.
+        </p>
 
-      <form onSubmit={handleSearch} className="mt-10 flex items-end gap-4 sm:max-w-md">
-        <div className="flex-1">
-          <label htmlFor="domain" className="block text-xs uppercase tracking-wide text-inkMuted">
-            Domain name
-          </label>
-          <input
-            id="domain"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="example.co.uk"
-            className="ledger-input mt-2 w-full py-2 font-mono text-lg text-ink placeholder:text-inkMuted/60"
-            autoComplete="off"
-            spellCheck={false}
-          />
+        <div className="mx-auto mt-6 flex max-w-lg flex-wrap justify-center gap-3">
+          {CHIPS.map(({ icon: Icon, label }) => (
+            <span
+              key={label}
+              className="flex items-center gap-1.5 rounded-full bg-white/15 px-3.5 py-1.5 text-sm text-white"
+            >
+              <Icon className="h-4 w-4" />
+              {label}
+            </span>
+          ))}
         </div>
-        <button
-          type="submit"
-          disabled={status === "loading"}
-          className="shrink-0 bg-ink px-5 py-2.5 font-body text-sm font-medium text-paper transition hover:bg-accentDeep disabled:opacity-50"
-        >
-          {status === "loading" ? "Checking…" : "Search"}
-        </button>
-      </form>
-
-      <div className="mt-6 min-h-[3.5rem]">
-        {status === "result" && result && (
-          <div className="flex flex-wrap items-center gap-4 border-t border-line pt-5">
-            <SealMark
-              className={`stamp h-9 w-9 shrink-0 ${
-                result.available ? "text-approve" : "text-reject"
-              }`}
-            />
-            <div className="flex-1">
-              <p className="font-mono text-base">{result.domain}</p>
-              <p className={`text-sm ${result.available ? "text-accentDeep" : "text-reject"}`}>
-                {result.available
-                  ? `Available — £${result.priceGbp.toFixed(2)}/yr`
-                  : "Already registered"}
-              </p>
-            </div>
-            {result.available && !showEmailField && (
-              <button
-                onClick={() => setShowEmailField(true)}
-                className="bg-accent px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accentDeep"
-              >
-                Register this domain
-              </button>
-            )}
-          </div>
-        )}
-
-        {(status === "unconfigured" || status === "error") && message && (
-          <p className="border-t border-line pt-5 text-sm text-inkMuted">{message}</p>
-        )}
       </div>
 
-      {status === "result" && result?.available && showEmailField && (
-        <form
-          onSubmit={handleCheckout}
-          className="mt-2 flex flex-wrap items-end gap-4 border-t border-line pt-5"
-        >
-          <div className="flex-1 sm:max-w-xs">
-            <label htmlFor="email" className="block text-xs uppercase tracking-wide text-inkMuted">
-              Email, for the receipt and account
-            </label>
+      <div className="mx-auto -mb-24 mt-10 max-w-2xl px-6">
+        <div className="rounded-2xl bg-white p-3 shadow-xl sm:p-4">
+          <form onSubmit={handleSearch} className="flex flex-col gap-3 sm:flex-row">
             <input
-              id="email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-              className="ledger-input mt-2 w-full py-2 font-body text-base text-ink"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="example.co.uk"
+              autoComplete="off"
+              spellCheck={false}
+              className="flex-1 rounded-xl border border-line px-4 py-3.5 font-mono text-base text-ink outline-none focus:border-primary"
             />
-          </div>
-          <button
-            type="submit"
-            disabled={buying}
-            className="shrink-0 bg-ink px-5 py-2.5 text-sm font-medium text-paper transition hover:bg-accentDeep disabled:opacity-50"
-          >
-            {buying ? "Redirecting…" : "Continue to payment"}
-          </button>
-        </form>
-      )}
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-primaryDark disabled:opacity-50"
+            >
+              {status === "loading" ? "Checking…" : "Search domain"}
+            </button>
+          </form>
+
+          {status === "result" && result && (
+            <div className="mt-4 flex flex-wrap items-center gap-4 border-t border-line pt-4">
+              <div
+                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${
+                  result.available ? "bg-green/10 text-green" : "bg-red/10 text-red"
+                }`}
+              >
+                <CheckIcon className="h-5 w-5" />
+              </div>
+              <div className="flex-1 text-left">
+                <p className="font-mono text-base text-ink">{result.domain}</p>
+                <p className={`text-sm ${result.available ? "text-green" : "text-red"}`}>
+                  {result.available ? `Available — £${result.priceGbp.toFixed(2)}/yr` : "Already registered"}
+                </p>
+              </div>
+              {result.available && !showEmailField && (
+                <button
+                  onClick={() => setShowEmailField(true)}
+                  className="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primaryDark"
+                >
+                  Register
+                </button>
+              )}
+            </div>
+          )}
+
+          {(status === "unconfigured" || status === "error") && message && (
+            <p className="mt-4 border-t border-line pt-4 text-left text-sm text-inkMuted">
+              {message}
+            </p>
+          )}
+
+          {status === "result" && result?.available && showEmailField && (
+            <form
+              onSubmit={handleCheckout}
+              className="mt-4 flex flex-col gap-3 border-t border-line pt-4 sm:flex-row sm:items-end"
+            >
+              <input
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                className="flex-1 rounded-xl border border-line px-4 py-3 text-base text-ink outline-none focus:border-primary"
+              />
+              <button
+                type="submit"
+                disabled={buying}
+                className="rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary disabled:opacity-50"
+              >
+                {buying ? "Redirecting…" : "Continue to payment"}
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
     </section>
   );
 }
