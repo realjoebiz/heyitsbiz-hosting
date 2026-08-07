@@ -88,3 +88,10 @@ model ProvisioningJob {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }
+
+model WaitlistEntry {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String   @default("hosting_coming_soon")
+  createdAt DateTime @default(now())
+}

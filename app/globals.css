@@ -1,3 +1,83 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --paper: #f1f3ee;
+  --surface: #ffffff;
+  --surface-2: #e9ece3;
+  --ink: #14231c;
+  --ink-muted: #4b5d53;
+  --accent: #b08d3e;
+  --accent-deep: #8a6c28;
+  --line: #d9ddd3;
+  --stamp-approve: #b08d3e;
+  --stamp-reject: #9c3b2e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #10160f;
+    --surface: #171e15;
+    --surface-2: #1b2318;
+    --ink: #e8ece3;
+    --ink-muted: #9baa92;
+    --accent: #d4af5f;
+    --accent-deep: #e8c77e;
+    --line: #2a3327;
+    --stamp-approve: #d4af5f;
+    --stamp-reject: #e0796a;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+body {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+.ledger-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--line);
+  border-radius: 0;
+}
+
+.ledger-input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+@keyframes stamp-drop {
+  0% {
+    transform: scale(2.4) rotate(-7deg);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(0.94) rotate(-7deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(-7deg);
+    opacity: 1;
+  }
+}
+
+.stamp {
+  animation: stamp-drop 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp {
+    animation: none;
+  }
+}
