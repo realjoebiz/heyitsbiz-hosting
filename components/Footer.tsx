@@ -1,8 +1,23 @@
 import { Logo } from "./Logo";
 
 const COLUMNS = [
-  { heading: "Product", links: [{ label: "Domains", href: "#domains" }, { label: "Hosting", href: "#hosting" }, { label: "Plans", href: "#plans" }] },
-  { heading: "Company", links: [{ label: "Why a new registrar", href: "#" }, { label: "FAQ", href: "#faq" }] },
+  {
+    heading: "Product",
+    links: [
+      { label: "Domains", href: "#find-a-domain" },
+      { label: "Web Hosting", href: "#hosting" },
+      { label: "WordPress Hosting", href: "#hosting" },
+      { label: "Managed Servers", href: "#hosting" },
+      { label: "Reseller Hosting", href: "#hosting" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "Why a new registrar", href: "#" },
+      { label: "FAQ", href: "#faq" },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -32,7 +47,8 @@ export function Footer() {
           ))}
         </div>
         <p className="mt-10 border-t border-line pt-6 text-xs text-inkMuted">
-          Hosting by Biz — a small, independent operation.
+          Hosting by Biz — a small, independent operation. Only Domains is live today;
+          everything else in Product is roadmap, not a live order.
         </p>
         {/* TODO before real launch: replace with real company name, number, and
             registered address once incorporated — see SETUP.md. */}

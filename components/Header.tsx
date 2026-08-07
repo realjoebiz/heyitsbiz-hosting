@@ -1,8 +1,7 @@
 import { Logo } from "./Logo";
 
 const NAV = [
-  { href: "#domains", label: "Domains" },
-  { href: "#plans", label: "Plans" },
+  { href: "#find-a-domain", label: "Domains" },
   { href: "#hosting", label: "Hosting" },
   { href: "#faq", label: "FAQ" },
 ];
@@ -20,7 +19,7 @@ export function Header() {
           ))}
         </nav>
         <a
-          href="#domains"
+          href="#find-a-domain"
           className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-primaryDark"
         >
           Search a domain

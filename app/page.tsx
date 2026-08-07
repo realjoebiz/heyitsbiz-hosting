@@ -1,8 +1,11 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { DomainSearch } from "@/components/DomainSearch";
+import { ProductCategories } from "@/components/ProductCategories";
 import { HowItWorks } from "@/components/HowItWorks";
 import { HostingPlans } from "@/components/HostingPlans";
+import { GrowthPath } from "@/components/GrowthPath";
+import { UseCases } from "@/components/UseCases";
 import { TrustSignals } from "@/components/TrustSignals";
 import { FounderNote } from "@/components/FounderNote";
 import { Faq } from "@/components/Faq";
@@ -18,8 +21,11 @@ export default function HomePage() {
       <main>
         <Hero />
         <DomainSearch priceGbp={priceGbp} />
+        <ProductCategories />
         <HowItWorks />
         <HostingPlans />
+        <GrowthPath />
+        <UseCases />
         <TrustSignals />
         <FounderNote />
         <Faq />
