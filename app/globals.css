@@ -28,6 +28,10 @@
   }
 }
 
+:root {
+  color-scheme: light dark;
+}
+
 ::selection {
   background: var(--primary);
   color: white;

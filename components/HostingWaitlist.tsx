@@ -49,7 +49,7 @@ export function HostingWaitlist() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="flex-1 rounded-xl border border-line px-4 py-3.5 text-base text-ink outline-none focus:border-primary"
+          className="flex-1 rounded-xl border border-line bg-bg px-4 py-3.5 text-base text-ink outline-none focus:border-primary"
         />
         <button
           type="submit"

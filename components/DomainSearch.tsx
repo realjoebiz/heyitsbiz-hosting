@@ -84,7 +84,7 @@ export function DomainSearch({ priceGbp }: { priceGbp: number }) {
   return (
     <section id="find-a-domain" className="relative -mt-16 px-6 pb-20">
       <div className="mx-auto max-w-2xl">
-        <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-line sm:p-8">
+        <div className="rounded-2xl bg-bg p-6 shadow-xl ring-1 ring-line sm:p-8">
           <h2 className="text-2xl font-bold text-ink">Find your domain name</h2>
           <p className="mt-1 text-sm text-inkMuted">
             Every great website needs a great name — search below.
@@ -97,7 +97,7 @@ export function DomainSearch({ priceGbp }: { priceGbp: number }) {
               placeholder="example.co.uk"
               autoComplete="off"
               spellCheck={false}
-              className="flex-1 rounded-xl border border-line px-4 py-3.5 font-mono text-base text-ink outline-none focus:border-primary"
+              className="flex-1 rounded-xl border border-line bg-bg px-4 py-3.5 font-mono text-base text-ink outline-none focus:border-primary"
             />
             <button
               type="submit"
@@ -149,7 +149,7 @@ export function DomainSearch({ priceGbp }: { priceGbp: number }) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="flex-1 rounded-xl border border-line px-4 py-3 text-base text-ink outline-none focus:border-primary"
+                className="flex-1 rounded-xl border border-line bg-bg px-4 py-3 text-base text-ink outline-none focus:border-primary"
               />
               <button
                 type="submit"
@@ -166,7 +166,7 @@ export function DomainSearch({ priceGbp }: { priceGbp: number }) {
           {TLDS.map((tld) => (
             <div
               key={tld}
-              className="flex items-center gap-2 rounded-full border border-line bg-white px-4 py-2 text-sm"
+              className="flex items-center gap-2 rounded-full border border-line bg-bg px-4 py-2 text-sm"
             >
               <span className="font-mono font-semibold text-ink">{tld}</span>
               <span className="text-inkMuted">£{priceGbp.toFixed(2)}/yr</span>
