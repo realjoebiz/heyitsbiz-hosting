@@ -14,7 +14,7 @@ const BLOCKS = [
   {
     variant: "support" as const,
     title: "Direct support",
-    body: "A small, independent operation. If something's wrong, you reach the person who can fix it — not a queue.",
+    body: "You reach the person who can actually fix your problem — not a ticket queue.",
   },
 ];
 

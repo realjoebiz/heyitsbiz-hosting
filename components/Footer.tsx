@@ -13,10 +13,7 @@ const COLUMNS = [
   },
   {
     heading: "Company",
-    links: [
-      { label: "Why a new registrar", href: "#" },
-      { label: "FAQ", href: "#faq" },
-    ],
+    links: [{ label: "Pricing", href: "#pricing" }, { label: "FAQ", href: "#faq" }],
   },
 ];
 
@@ -47,8 +44,7 @@ export function Footer() {
           ))}
         </div>
         <p className="mt-10 border-t border-line pt-6 text-xs text-inkMuted">
-          Hosting by Biz — a small, independent operation. Only Domains is live today;
-          everything else in Product is roadmap, not a live order.
+          Hosting by Biz.
         </p>
         {/* TODO before real launch: replace with real company name, number, and
             registered address once incorporated — see SETUP.md. */}

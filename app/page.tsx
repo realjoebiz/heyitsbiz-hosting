@@ -1,11 +1,10 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { DomainSearch } from "@/components/DomainSearch";
-import { ProductCategories } from "@/components/ProductCategories";
+import { WhatWeOffer } from "@/components/WhatWeOffer";
 import { HowItWorks } from "@/components/HowItWorks";
 import { HostingPlans } from "@/components/HostingPlans";
 import { TrustSignals } from "@/components/TrustSignals";
-import { FounderNote } from "@/components/FounderNote";
 import { Faq } from "@/components/Faq";
 import { CtaBanner } from "@/components/CtaBanner";
 import { Footer } from "@/components/Footer";
@@ -19,11 +18,10 @@ export default function HomePage() {
       <main>
         <Hero />
         <DomainSearch priceGbp={priceGbp} />
-        <ProductCategories />
+        <WhatWeOffer />
         <HowItWorks />
         <HostingPlans />
         <TrustSignals />
-        <FounderNote />
         <Faq />
         <CtaBanner />
       </main>

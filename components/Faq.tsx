@@ -1,19 +1,19 @@
 const ITEMS = [
   {
-    q: "Is this a big company?",
-    a: "No. Hosting by Biz is a small, independent operation — that's a deliberate choice, not a limitation.",
-  },
-  {
-    q: "What happens to my domain if something happens to Hosting by Biz?",
-    a: "Your domain is registered through our wholesale registry partner, an established provider — Hosting by Biz manages the account on top, the same as any reseller. The registration itself doesn't depend on us staying online.",
+    q: "What happens to my domain if I ever need to move it?",
+    a: "Domains are registered through our wholesale registry partner and follow standard transfer rules — you're never locked in, and the registration doesn't depend on any single company staying online.",
   },
   {
     q: "Which domain endings can I register?",
-    a: "Most common UK and international endings — .co.uk, .com, .org, .uk and more — with the list growing as we add them.",
+    a: "Most common UK and international endings — .co.uk, .com, .org, .uk and more, with the list growing.",
   },
   {
-    q: "When does hosting launch?",
-    a: "No fixed date yet. Leave your email above and you'll be told the day it opens, not before.",
+    q: "How do I get access to hosting?",
+    a: "Join the list on the pricing section above — you'll get early access as plans open up.",
+  },
+  {
+    q: "Do you charge anything I haven't agreed to?",
+    a: "No. Checkout shows the total before you pay, and that's the total. No renewal surprises, no upsells buried at the last step.",
   },
 ];
 

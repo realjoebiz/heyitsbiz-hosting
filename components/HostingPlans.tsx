@@ -25,16 +25,12 @@ const TIERS = [
 
 export function HostingPlans() {
   return (
-    <section id="hosting" className="border-t border-line bg-surface py-20">
+    <section id="pricing" className="border-t border-line bg-surface py-20">
       <div className="mx-auto max-w-5xl px-6">
         <div className="text-center">
-          <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
-            Coming soon
-          </span>
-          <h2 className="mt-4 text-4xl font-extrabold tracking-tight">Hosting, built on the same account</h2>
+          <h2 className="text-4xl font-extrabold tracking-tight">Hosting plans</h2>
           <p className="mx-auto mt-2 max-w-xl text-inkMuted">
-            Deployed with Coolify, on the same Cloudflare DNS as your domain. Pricing
-            below is an early estimate — confirmed before anything is billed.
+            Deployed on the same account as your domain, on Cloudflare DNS.
           </p>
         </div>
 
@@ -42,7 +38,7 @@ export function HostingPlans() {
           {TIERS.map((tier) => (
             <div
               key={tier.name}
-              className={`relative rounded-2xl bg-bg p-8 transition hover:-translate-y-1.5 hover:shadow-xl ${
+              className={`relative flex flex-col rounded-2xl bg-bg p-8 transition hover:-translate-y-1.5 hover:shadow-xl ${
                 tier.recommended ? "border-2 border-accent2 shadow-lg" : "border border-line"
               }`}
             >
@@ -55,7 +51,7 @@ export function HostingPlans() {
               <p className="mt-1 text-sm text-inkMuted">{tier.blurb}</p>
               <p className="mt-5 font-mono text-3xl font-bold text-ink">
                 {tier.price}
-                <span className="text-base font-normal text-inkMuted">/mo est.</span>
+                <span className="text-base font-normal text-inkMuted">/mo</span>
               </p>
               <ul className="mt-6 flex flex-col gap-3 text-sm text-ink">
                 {tier.features.map((feature) => (
@@ -65,15 +61,24 @@ export function HostingPlans() {
                   </li>
                 ))}
               </ul>
+              <a
+                href="#get-hosting"
+                className={`mt-8 rounded-xl py-3 text-center text-sm font-semibold transition ${
+                  tier.recommended
+                    ? "bg-accent2 text-slate-900 hover:bg-accent2/90"
+                    : "bg-ink text-white hover:bg-primary"
+                }`}
+              >
+                Get started
+              </a>
             </div>
           ))}
         </div>
 
-        <div className="mx-auto mt-14 max-w-md text-center">
-          <h3 className="text-lg font-semibold">Be first when it opens</h3>
+        <div id="get-hosting" className="mx-auto mt-16 max-w-md scroll-mt-24 text-center">
+          <h3 className="text-lg font-semibold">Get early access</h3>
           <p className="mt-1 text-sm text-inkMuted">
-            No fixed date yet. Leave your email and you'll hear about it the day it
-            launches, not before.
+            Leave your email and you'll be first in line when hosting opens.
           </p>
           <div className="mt-5">
             <HostingWaitlist />
