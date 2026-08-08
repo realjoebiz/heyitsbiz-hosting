@@ -54,7 +54,7 @@ export function HostingWaitlist() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="shrink-0 rounded-xl bg-ink px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-primary disabled:opacity-50"
+          className="shrink-0 rounded-xl bg-surfaceInverse px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-primary disabled:opacity-50"
         >
           {status === "loading" ? "Adding…" : "Notify me"}
         </button>

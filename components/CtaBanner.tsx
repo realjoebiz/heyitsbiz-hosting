@@ -1,6 +1,6 @@
 export function CtaBanner() {
   return (
-    <section className="border-t border-line bg-ink py-16 text-center text-white">
+    <section className="border-t border-line bg-surfaceInverse py-16 text-center text-white">
       <div className="mx-auto max-w-2xl px-6">
         <h2 className="text-4xl font-extrabold tracking-tight">Ready to register your domain?</h2>
         <p className="mt-3 text-white/70">Search above, register in minutes, one flat price.</p>

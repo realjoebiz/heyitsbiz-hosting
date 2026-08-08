@@ -17,6 +17,11 @@
   --dot: rgba(11, 11, 20, 0.08);
   --glow1: #a78bfa;
   --glow2: #fbbf24;
+  /* Deliberately fixed, not redefined in the dark media query below — for
+     cards/banners that need to stay dark for contrast regardless of the
+     page's current theme. Never pair the *flipping* --ink with literal
+     white text; that inverts in dark mode and goes unreadable. */
+  --surface-inverse: #14121f;
 }
 
 @media (prefers-color-scheme: dark) {

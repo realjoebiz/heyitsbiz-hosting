@@ -16,6 +16,7 @@ const config: Config = {
         green: "var(--green)",
         red: "var(--red)",
         line: "var(--line)",
+        surfaceInverse: "var(--surface-inverse)",
       },
       fontFamily: {
         sans: ["var(--font-body)", "system-ui", "sans-serif"],

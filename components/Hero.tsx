@@ -188,7 +188,7 @@ export function Hero({ priceGbp }: { priceGbp: number }) {
             <button
               type="submit"
               disabled={buying}
-              className="rounded-xl bg-ink px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary disabled:opacity-50"
+              className="rounded-xl bg-surfaceInverse px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary disabled:opacity-50"
             >
               {buying ? "Redirecting…" : "Continue to payment"}
             </button>

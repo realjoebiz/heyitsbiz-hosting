@@ -74,7 +74,7 @@ export function HostingPlans() {
                 key={tier.name}
                 className={`relative flex flex-col rounded-2xl p-8 transition hover:-translate-y-1.5 hover:shadow-2xl ${
                   tier.recommended
-                    ? "bg-ink text-white shadow-xl md:scale-105"
+                    ? "bg-surfaceInverse text-white shadow-xl ring-1 ring-accent2/40 md:scale-105"
                     : "border border-line bg-bg text-ink hover:shadow-xl"
                 }`}
               >

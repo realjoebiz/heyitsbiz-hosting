@@ -56,7 +56,7 @@ export function WhatWeOffer() {
               key={name}
               className={`flex flex-col rounded-2xl p-7 transition hover:-translate-y-1 hover:shadow-xl ${span} ${
                 featured
-                  ? "bg-ink text-white"
+                  ? "bg-surfaceInverse text-white ring-1 ring-primary/40"
                   : "border border-line bg-bg text-ink hover:shadow-lg"
               }`}
             >
