@@ -18,7 +18,8 @@ const TLDS = [".co.uk", ".com", ".org", ".uk"];
 // component can't read a non-NEXT_PUBLIC_ env var itself, and duplicating
 // it into a second env var would let the display price drift from billing.
 export function DomainSearch({ priceGbp }: { priceGbp: number }) {
-  const [query, setQuery] = useState("");
+  const [name, setName] = useState("");
+  const [tld, setTld] = useState(TLDS[0]);
   const [status, setStatus] = useState<Status>("idle");
   const [result, setResult] = useState<AvailabilityResult | null>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -28,8 +29,10 @@ export function DomainSearch({ priceGbp }: { priceGbp: number }) {
 
   async function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    const domain = query.trim().toLowerCase();
-    if (!domain) return;
+    const trimmedName = name.trim().toLowerCase();
+    if (!trimmedName) return;
+
+    const domain = `${trimmedName}${tld}`;
 
     setStatus("loading");
     setResult(null);
@@ -91,14 +94,28 @@ export function DomainSearch({ priceGbp }: { priceGbp: number }) {
           </p>
 
           <form onSubmit={handleSearch} className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="example.co.uk"
-              autoComplete="off"
-              spellCheck={false}
-              className="flex-1 rounded-xl border border-line bg-bg px-4 py-3.5 font-mono text-base text-ink outline-none focus:border-primary"
-            />
+            <div className="flex flex-1 overflow-hidden rounded-xl border border-line focus-within:border-primary">
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="yourbrand"
+                autoComplete="off"
+                spellCheck={false}
+                className="min-w-0 flex-1 bg-bg px-4 py-3.5 font-mono text-base text-ink outline-none"
+              />
+              <select
+                value={tld}
+                onChange={(e) => setTld(e.target.value)}
+                aria-label="Domain ending"
+                className="shrink-0 border-l border-line bg-surface px-3 font-mono text-base text-ink outline-none"
+              >
+                {TLDS.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+            </div>
             <button
               type="submit"
               disabled={status === "loading"}
@@ -163,12 +180,12 @@ export function DomainSearch({ priceGbp }: { priceGbp: number }) {
         </div>
 
         <div className="mt-6 flex flex-wrap justify-center gap-3">
-          {TLDS.map((tld) => (
+          {TLDS.map((option) => (
             <div
-              key={tld}
+              key={option}
               className="flex items-center gap-2 rounded-full border border-line bg-bg px-4 py-2 text-sm"
             >
-              <span className="font-mono font-semibold text-ink">{tld}</span>
+              <span className="font-mono font-semibold text-ink">{option}</span>
               <span className="text-inkMuted">£{priceGbp.toFixed(2)}/yr</span>
             </div>
           ))}
