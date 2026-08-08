@@ -1,6 +1,5 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { DomainSearch } from "@/components/DomainSearch";
 import { WhatWeOffer } from "@/components/WhatWeOffer";
 import { HowItWorks } from "@/components/HowItWorks";
 import { HostingPlans } from "@/components/HostingPlans";
@@ -16,8 +15,7 @@ export default function HomePage() {
     <>
       <Header />
       <main>
-        <Hero />
-        <DomainSearch priceGbp={priceGbp} />
+        <Hero priceGbp={priceGbp} />
         <WhatWeOffer />
         <HowItWorks />
         <HostingPlans />

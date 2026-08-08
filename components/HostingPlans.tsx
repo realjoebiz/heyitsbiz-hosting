@@ -72,8 +72,10 @@ export function HostingPlans() {
             return (
               <div
                 key={tier.name}
-                className={`relative flex flex-col rounded-2xl bg-bg p-8 transition hover:-translate-y-1.5 hover:shadow-xl ${
-                  tier.recommended ? "border-2 border-accent2 shadow-lg" : "border border-line"
+                className={`relative flex flex-col rounded-2xl p-8 transition hover:-translate-y-1.5 hover:shadow-2xl ${
+                  tier.recommended
+                    ? "bg-ink text-white shadow-xl md:scale-105"
+                    : "border border-line bg-bg text-ink hover:shadow-xl"
                 }`}
               >
                 {tier.recommended && (
@@ -82,20 +84,26 @@ export function HostingPlans() {
                   </span>
                 )}
                 <h3 className="text-lg font-semibold">{tier.name}</h3>
-                <p className="mt-1 text-sm text-inkMuted">{tier.blurb}</p>
-                <p className="mt-5 font-mono text-3xl font-bold text-ink">
+                <p className={`mt-1 text-sm ${tier.recommended ? "text-white/70" : "text-inkMuted"}`}>
+                  {tier.blurb}
+                </p>
+                <p className="mt-5 font-mono text-3xl font-bold">
                   £{displayPrice.toFixed(2)}
-                  <span className="text-base font-normal text-inkMuted">/mo</span>
+                  <span className={`text-base font-normal ${tier.recommended ? "text-white/70" : "text-inkMuted"}`}>
+                    /mo
+                  </span>
                 </p>
                 {yearly && (
-                  <p className="mt-1 text-xs text-inkMuted">
+                  <p className={`mt-1 text-xs ${tier.recommended ? "text-white/60" : "text-inkMuted"}`}>
                     billed £{(displayPrice * 12).toFixed(2)} yearly
                   </p>
                 )}
-                <ul className="mt-6 flex flex-col gap-3 text-sm text-ink">
+                <ul className="mt-6 flex flex-col gap-3 text-sm">
                   {tier.features.map((feature) => (
                     <li key={feature} className="flex items-center gap-2.5">
-                      <CheckIcon className="h-4 w-4 shrink-0 text-green" />
+                      <CheckIcon
+                        className={`h-4 w-4 shrink-0 ${tier.recommended ? "text-accent2" : "text-green"}`}
+                      />
                       {feature}
                     </li>
                   ))}
@@ -105,7 +113,7 @@ export function HostingPlans() {
                   className={`mt-8 rounded-xl py-3 text-center text-sm font-semibold transition ${
                     tier.recommended
                       ? "bg-accent2 text-slate-900 hover:bg-accent2/90"
-                      : "bg-ink text-white hover:bg-primary"
+                      : "bg-primary text-white hover:bg-primaryDark"
                   }`}
                 >
                   Get started
