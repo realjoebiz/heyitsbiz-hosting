@@ -9,9 +9,12 @@
   --ink-muted: #64748b;
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
+  --accent2: #84cc16;
+  --accent2-deep: #4d7c0f;
   --green: #16a34a;
   --red: #dc2626;
   --line: #e2e8f0;
+  --dot: rgba(15, 23, 42, 0.08);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,9 +25,12 @@
     --ink-muted: #94a3b8;
     --primary: #3b82f6;
     --primary-dark: #60a5fa;
+    --accent2: #a3e635;
+    --accent2-deep: #bef264;
     --green: #22c55e;
     --red: #f87171;
     --line: #1e293b;
+    --dot: rgba(238, 242, 255, 0.08);
   }
 }
 
@@ -45,4 +51,9 @@ h3 {
 
 .hero-gradient {
   background: linear-gradient(135deg, var(--primary) 0%, #0ea5e9 100%);
+}
+
+.dot-grid {
+  background-image: radial-gradient(var(--dot) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
 }

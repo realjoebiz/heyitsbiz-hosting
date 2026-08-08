@@ -20,10 +20,10 @@ export function HowItWorks() {
   return (
     <section className="py-20">
       <div className="mx-auto max-w-4xl px-6">
-        <h2 className="text-center text-3xl font-bold">How it works</h2>
+        <h2 className="text-center text-4xl font-extrabold tracking-tight">How it works</h2>
         <ol className="mt-12 grid gap-10 sm:grid-cols-3">
           {STEPS.map((step) => (
-            <li key={step.n} className="text-center">
+            <li key={step.n} className="text-center transition hover:-translate-y-1">
               <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-primary font-mono text-sm font-bold text-white">
                 {step.n}
               </span>

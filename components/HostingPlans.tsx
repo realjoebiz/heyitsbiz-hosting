@@ -31,7 +31,7 @@ export function HostingPlans() {
           <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary">
             Coming soon
           </span>
-          <h2 className="mt-4 text-3xl font-bold">Hosting, built on the same account</h2>
+          <h2 className="mt-4 text-4xl font-extrabold tracking-tight">Hosting, built on the same account</h2>
           <p className="mx-auto mt-2 max-w-xl text-inkMuted">
             Deployed with Coolify, on the same Cloudflare DNS as your domain. Pricing
             below is an early estimate — confirmed before anything is billed.
@@ -42,12 +42,12 @@ export function HostingPlans() {
           {TIERS.map((tier) => (
             <div
               key={tier.name}
-              className={`relative rounded-2xl bg-bg p-8 ${
-                tier.recommended ? "border-2 border-primary shadow-lg" : "border border-line"
+              className={`relative rounded-2xl bg-bg p-8 transition hover:-translate-y-1.5 hover:shadow-xl ${
+                tier.recommended ? "border-2 border-accent2 shadow-lg" : "border border-line"
               }`}
             >
               {tier.recommended && (
-                <span className="absolute -top-3 left-8 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                <span className="absolute -top-3 left-8 rounded-full bg-accent2 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-900">
                   Recommended
                 </span>
               )}

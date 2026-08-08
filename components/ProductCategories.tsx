@@ -1,81 +1,50 @@
 import { GlobeIcon, LayersIcon, ServerIcon, UsersIcon } from "./Icons";
 
 const CATEGORIES = [
-  {
-    icon: GlobeIcon,
-    name: "Domains",
-    status: "Live now",
-    live: true,
-    body: "Search, register, and manage a domain — the part of this that's real today.",
-  },
-  {
-    icon: LayersIcon,
-    name: "Web Hosting",
-    status: "In progress",
-    live: false,
-    body: "Deploy a site with Coolify on the same account as your domain. Next thing being built.",
-  },
-  {
-    icon: LayersIcon,
-    name: "WordPress Hosting",
-    status: "On the roadmap",
-    live: false,
-    body: "A managed WordPress option once general hosting is solid.",
-  },
-  {
-    icon: ServerIcon,
-    name: "Managed Servers",
-    status: "On the roadmap",
-    live: false,
-    body: "Your own resources on Hetzner infrastructure, for sites that outgrow shared hosting.",
-  },
-  {
-    icon: UsersIcon,
-    name: "Reseller Hosting",
-    status: "Under consideration",
-    live: false,
-    body: "White-label hosting for agencies managing client sites — not yet committed to.",
-  },
+  { icon: GlobeIcon, name: "Domains", status: "Live now", live: true },
+  { icon: LayersIcon, name: "Web Hosting", status: "In progress", live: false },
+  { icon: LayersIcon, name: "WordPress Hosting", status: "Roadmap", live: false },
+  { icon: ServerIcon, name: "Managed Servers", status: "Roadmap", live: false },
+  { icon: UsersIcon, name: "Reseller Hosting", status: "Under consideration", live: false },
 ];
 
 export function ProductCategories() {
   return (
-    <section className="py-20">
-      <div className="mx-auto max-w-5xl px-6">
+    <section className="dot-grid py-24">
+      <div className="mx-auto max-w-4xl px-6">
         <div className="text-center">
-          <h2 className="text-3xl font-bold">Hosting, however you build</h2>
-          <p className="mx-auto mt-2 max-w-xl text-inkMuted">
-            Domains are live today. Everything else here is a real, honest roadmap — not
-            a live product yet, and labeled as such.
+          <h2 className="text-4xl font-extrabold tracking-tight">One account, the whole build</h2>
+          <p className="mx-auto mt-3 max-w-xl text-lg text-inkMuted">
+            Domains are real and working today. Everything to the right of it is an
+            honest roadmap, one account away from being live — not a live order yet.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          {CATEGORIES.map(({ icon: Icon, name, status, live, body }) => (
-            <div
-              key={name}
-              className={`rounded-2xl border p-6 ${
-                live ? "border-primary bg-primary/5" : "border-line bg-bg"
-              }`}
-            >
-              <div
-                className={`flex h-11 w-11 items-center justify-center rounded-xl ${
-                  live ? "bg-primary text-white" : "bg-surface text-primary"
-                }`}
-              >
-                <Icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-4 font-semibold">{name}</h3>
-              <span
-                className={`mt-1 inline-block text-xs font-semibold uppercase tracking-wide ${
-                  live ? "text-primary" : "text-inkMuted"
-                }`}
-              >
-                {status}
-              </span>
-              <p className="mt-2 text-sm text-inkMuted">{body}</p>
-            </div>
-          ))}
+        <div className="relative mt-16">
+          <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-line sm:block" />
+          <ol className="relative grid gap-10 sm:grid-cols-5 sm:gap-4">
+            {CATEGORIES.map(({ icon: Icon, name, status, live }) => (
+              <li key={name} className="flex flex-col items-center text-center">
+                <span
+                  className={`flex h-12 w-12 items-center justify-center rounded-full border-2 transition hover:-translate-y-1 ${
+                    live
+                      ? "border-primary bg-primary text-white shadow-lg shadow-primary/30"
+                      : "border-line bg-bg text-inkMuted"
+                  }`}
+                >
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-4 text-sm font-semibold">{name}</h3>
+                <span
+                  className={`mt-1 text-xs font-semibold uppercase tracking-wide ${
+                    live ? "text-primary" : "text-accent2Deep"
+                  }`}
+                >
+                  {status}
+                </span>
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

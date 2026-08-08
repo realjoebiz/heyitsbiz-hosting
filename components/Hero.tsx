@@ -12,7 +12,7 @@ export function Hero() {
     <section className="hero-gradient relative overflow-hidden pb-28 pt-20 text-white sm:pt-24">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-2">
         <div>
-          <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">
+          <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
             Your domain, sorted in minutes.
           </h1>
           <p className="mt-5 max-w-lg text-lg text-white/85">
@@ -34,12 +34,12 @@ export function Hero() {
             </a>
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
-            {CHIPS.map(({ icon: Icon, label }) => (
+            {CHIPS.map(({ icon: Icon, label }, i) => (
               <span
                 key={label}
                 className="flex items-center gap-1.5 rounded-full bg-white/15 px-3.5 py-1.5 text-sm"
               >
-                <Icon className="h-4 w-4" />
+                <Icon className={`h-4 w-4 ${i === 1 ? "text-accent2" : ""}`} />
                 {label}
               </span>
             ))}

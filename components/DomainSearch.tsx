@@ -85,7 +85,7 @@ export function DomainSearch({ priceGbp }: { priceGbp: number }) {
     <section id="find-a-domain" className="relative -mt-16 px-6 pb-20">
       <div className="mx-auto max-w-2xl">
         <div className="rounded-2xl bg-bg p-6 shadow-xl ring-1 ring-line sm:p-8">
-          <h2 className="text-2xl font-bold text-ink">Find your domain name</h2>
+          <h2 className="text-3xl font-extrabold tracking-tight text-ink">Find your domain name</h2>
           <p className="mt-1 text-sm text-inkMuted">
             Every great website needs a great name — search below.
           </p>

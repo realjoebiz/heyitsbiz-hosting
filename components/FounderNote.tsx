@@ -2,7 +2,7 @@ export function FounderNote() {
   return (
     <section className="border-t border-line py-20">
       <div className="mx-auto max-w-2xl px-6 text-center">
-        <h2 className="text-3xl font-bold">Why a new registrar</h2>
+        <h2 className="text-4xl font-extrabold tracking-tight">Why a new registrar</h2>
         <p className="mt-5 text-lg leading-relaxed text-inkMuted">
           Most registrars make their margin at checkout — SSL upsells, "protection" plans,
           renewal prices quietly higher than the first year. Hosting by Biz charges one

@@ -21,7 +21,7 @@ export function Faq() {
   return (
     <section id="faq" className="py-20">
       <div className="mx-auto max-w-3xl px-6">
-        <h2 className="text-center text-3xl font-bold">Questions</h2>
+        <h2 className="text-center text-4xl font-extrabold tracking-tight">Questions</h2>
         <dl className="mx-auto mt-10 flex max-w-2xl flex-col divide-y divide-line">
           {ITEMS.map((item) => (
             <div key={item.q} className="py-6 first:pt-0">

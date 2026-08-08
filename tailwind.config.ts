@@ -11,6 +11,8 @@ const config: Config = {
         inkMuted: "var(--ink-muted)",
         primary: "var(--primary)",
         primaryDark: "var(--primary-dark)",
+        accent2: "var(--accent2)",
+        accent2Deep: "var(--accent2-deep)",
         green: "var(--green)",
         red: "var(--red)",
         line: "var(--line)",

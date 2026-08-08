@@ -25,7 +25,7 @@ export function TrustSignals() {
     <section className="border-t border-line py-20">
       <div className="mx-auto max-w-4xl px-6">
         <div className="text-center">
-          <h2 className="text-3xl font-bold">Built plainly</h2>
+          <h2 className="text-4xl font-extrabold tracking-tight">Built plainly</h2>
           <p className="mt-2 text-inkMuted">No feature you can't check for yourself.</p>
         </div>
 
@@ -37,7 +37,10 @@ export function TrustSignals() {
                 i % 2 === 1 ? "sm:flex-row-reverse" : ""
               }`}
             >
-              <FeatureIllustration variant={block.variant} className="w-40 shrink-0 sm:w-48" />
+              <FeatureIllustration
+                variant={block.variant}
+                className="w-40 shrink-0 transition duration-300 hover:-translate-y-1 hover:rotate-1 sm:w-48"
+              />
               <div className="text-center sm:text-left">
                 <h3 className="text-xl font-semibold">{block.title}</h3>
                 <p className="mt-2 max-w-md text-inkMuted">{block.body}</p>
